@@ -2,6 +2,7 @@
 <h3 align="center">Full Stack Web Developer (Fresher) | Python AI/ML Developer | Software Engineer</h3>
 
 <p align="center">
+  <a href="https://jayraj-barot-jb.github.io/"><img src="https://img.shields.io/badge/Portfolio-6366F1?style=for-the-badge&logo=googlechrome&logoColor=white"></a>
   <a href="https://www.linkedin.com/in/barot-jayraj"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"></a>
   <a href="mailto:barotjayraj60@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
   <a href="https://github.com/jayraj-barot-jb"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a>
@@ -48,6 +49,14 @@
 
 ### 📌 Featured Projects
 
+**[Mens Tailor — Bespoke Custom Tailoring Platform](https://mens-tailor.vercel.app/)**
+Luxury bespoke tailoring web platform with interactive appointment booking and smooth animations.
+`HTML5` `CSS3` `Bootstrap 5` `JavaScript` `GSAP`
+- Interactive appointment booking system with real-time modal validation
+- Dynamic gallery lightbox with multi-category filtering
+- Smooth GSAP animations and mobile-first responsive architecture
+- 🌐 **Live Demo:** [https://mens-tailor.vercel.app/](https://mens-tailor.vercel.app/)
+
 **[R.K Jewellery Shop Management System](https://github.com/jayraj-barot-jb)**
 Full-stack e-commerce & inventory management platform built during my Python AI/ML internship.
 `Python` `Django` `SQLite` `Bootstrap 5` `Razorpay API`
@@ -62,8 +71,6 @@ BCA capstone project automating college administration.
 - Role-based access control (RBAC), attendance tracking, exam results
 - Secure authentication with MySQL database design
 
-> Update the links above to point directly at each project's repository.
-
 ---
 
 ### 📈 GitHub Stats
@@ -77,6 +84,7 @@ BCA capstone project automating college administration.
 
 ### 📫 Let's Connect
 
+- 🌐 [Live Portfolio](https://jayraj-barot-jb.github.io/)
 - 💼 [LinkedIn](https://www.linkedin.com/in/barot-jayraj)
 - 📧 barotjayraj60@gmail.com
 - 📍 Hatharva, Vadali, Sabarkantha, Gujarat
