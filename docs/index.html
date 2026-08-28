@@ -2638,6 +2638,46 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Project 4: Mens Tailor -->
+                    <div class="carousel-item">
+                        <div class="portfolio-project-card mx-auto" style="max-width: 600px;">
+                            <div>
+                                <div class="portfolio-project-image-wrapper">
+                                    <div class="portfolio-project-badge-number">04</div>
+                                    <canvas class="card-3d-canvas" data-type="tailor" style="display: none;"></canvas>
+                                    <img class="fallback-img" src="images/mens_tailor_project.webp" alt="Mens Tailor - Bespoke Tailoring Platform" loading="lazy" decoding="async">
+                                    <div class="media-toggle" onclick="event.stopPropagation(); toggleCardMedia(this, 'tailor');">
+                                        <span class="toggle-btn active" data-mode="img" title="Show Image"><i data-lucide="image" style="width: 12px; height: 12px;"></i></span>
+                                        <span class="toggle-btn" data-mode="3d" title="Show 3D WebGL"><i data-lucide="box" style="width: 12px; height: 12px;"></i></span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-project-details">
+                                    <span class="project-type" style="font-size: 0.78rem; display: block; margin-bottom: 0.5rem;">Frontend Web Project • 2026</span>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                                        <h3 style="margin-bottom: 0;">Mens Tailor</h3>
+                                        <a href="https://mens-tailor.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="background: rgba(99, 102, 241, 0.15); color: var(--accent-light); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 20px; font-size: 0.78rem; padding: 4px 12px; display: inline-flex; align-items: center; gap: 4px; text-decoration: none;">
+                                            <i data-lucide="external-link" style="width: 13px; height: 13px;"></i> Live Demo
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-project-tech-tags">
+                                        <span class="portfolio-project-tech-tag">HTML5</span>
+                                        <span class="portfolio-project-tech-tag">CSS3</span>
+                                        <span class="portfolio-project-tech-tag">Bootstrap 5</span>
+                                        <span class="portfolio-project-tech-tag">JavaScript</span>
+                                        <span class="portfolio-project-tech-tag">GSAP</span>
+                                    </div>
+                                    <p class="portfolio-project-desc">Luxury bespoke tailoring web platform with interactive appointment booking & smooth animations.</p>
+                                    <ul class="portfolio-project-features-list">
+                                        <li>Interactive appointment booking modal</li>
+                                        <li>Dynamic gallery lightbox with category filter</li>
+                                        <li>Smooth GSAP animations & luxury styling</li>
+                                        <li><a href="https://mens-tailor.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-light); text-decoration: underline; font-weight: 500;">👉 Visit Live Website (mens-tailor.vercel.app)</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Controls -->
@@ -3293,6 +3333,26 @@
         document.querySelectorAll('a, button, .portfolio-project-card, .project-card, .skill-card, #chatbot-trigger').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Lightbox for Project & Certificate Previews
+        const lightboxModalEl = document.getElementById('imageLightbox');
+        const lightboxImg = lightboxModalEl ? lightboxModalEl.querySelector('img') : null;
+        let bsLightbox = null;
+        if (lightboxModalEl && typeof bootstrap !== 'undefined') {
+            bsLightbox = new bootstrap.Modal(lightboxModalEl);
+        }
+
+        document.querySelectorAll('.portfolio-project-image-wrapper, .cert-card-preview').forEach(wrapper => {
+            wrapper.addEventListener('click', (e) => {
+                if (e.target.closest('.media-toggle')) return;
+                const img = wrapper.querySelector('img');
+                if (img && lightboxImg && bsLightbox) {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt || "Preview";
+                    bsLightbox.show();
+                }
+            });
         });
 
         // Optimize Three.js & Performance
@@ -4399,6 +4459,28 @@
                     const innerGeom = new THREE.BoxGeometry(1.0, 1.0, 1.0);
                     const innerMat = new THREE.MeshBasicMaterial({
                         color: 0xf59e0b,
+                        wireframe: true,
+                        transparent: true,
+                        opacity: 0.5
+                    });
+                    const innerMesh = new THREE.Mesh(innerGeom, innerMat);
+                    meshGroup.add(innerMesh);
+                }
+                else if (type === 'tailor') {
+                    colorTheme = 0xc6a16e;
+                    const geom = new THREE.DodecahedronGeometry(1.8, 0);
+                    const mat = new THREE.MeshBasicMaterial({
+                        color: colorTheme,
+                        wireframe: true,
+                        transparent: true,
+                        opacity: 0.85
+                    });
+                    const mainMesh = new THREE.Mesh(geom, mat);
+                    meshGroup.add(mainMesh);
+
+                    const innerGeom = new THREE.IcosahedronGeometry(1.0, 0);
+                    const innerMat = new THREE.MeshBasicMaterial({
+                        color: 0x818cf8,
                         wireframe: true,
                         transparent: true,
                         opacity: 0.5
